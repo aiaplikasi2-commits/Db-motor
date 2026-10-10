@@ -1,0 +1,6 @@
+{
+  "name": "JUAL MOTOR",
+  "description": "Aplikasi PWA sales motor untuk mengelola foto motor di Google Drive, iklan AI Gemini, dan database customer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Filter out benign Vite HMR websocket reconnection noise in preview iframe
+      window.addEventListener(
+        'error',
+        (e) => {
+          if (
+            e.message &&
+            (e.message.includes('createWebSocketModuleRunnerTransport') ||
+              e.message.includes('[vite] connect') ||
+              e.message.includes('WebSocket'))
+          ) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+          }
+        },
+        true
+      );
+      window.addEventListener(
+        'unhandledrejection',
+        (e) => {
+          if (
+            e.reason &&
+            (String(e.reason).includes('createWebSocketModuleRunnerTransport') ||
+              String(e.reason).includes('WebSocket') ||
+              String(e.reason).includes('[vite]'))
+          ) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+          }
+        },
+        true
+      );
+    </script>
+    <title>JUAL MOTOR</title>
+    <meta name="description" content="Aplikasi PWA sales motor untuk mengelola foto motor di Google Drive, iklan AI Gemini, dan database customer." />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Jual Motor" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:title" content="JUAL MOTOR" />
+    <meta property="og:description" content="Aplikasi PWA sales motor untuk mengelola foto motor di Google Drive, iklan AI Gemini, dan database customer." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

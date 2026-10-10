@@ -1,0 +1,64 @@
+{
+  "entities": {
+    "Motor": {
+      "title": "Motor",
+      "description": "Data listing motor untuk iklan penjualan",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID sales pemilik data" },
+        "userEmail": { "type": "string", "description": "Email sales" },
+        "title": { "type": "string", "description": "Judul iklan motor" },
+        "description": { "type": "string", "description": "Teks lengkap iklan motor" },
+        "originalDescription": { "type": "string", "description": "Teks asli sebelum AI" },
+        "price": { "type": "number", "description": "Estimasi harga motor jika ada" },
+        "mainPhotoId": { "type": "string", "description": "ID foto utama" },
+        "photos": { "type": "array", "description": "Metadata foto di Google Drive" },
+        "createdAt": { "type": "string", "description": "Waktu pembuatan" },
+        "updatedAt": { "type": "string", "description": "Waktu pembaruan" }
+      },
+      "required": ["userId", "title", "description", "photos"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Database pelanggan sales motor",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID sales pemilik kontak" },
+        "name": { "type": "string", "description": "Nama customer" },
+        "phone": { "type": "string", "description": "Nomor WhatsApp atau telepon" },
+        "notes": { "type": "string", "description": "Catatan minat motor atau kebutuhan" },
+        "createdAt": { "type": "string", "description": "Waktu pembuatan" },
+        "updatedAt": { "type": "string", "description": "Waktu pembaruan" }
+      },
+      "required": ["userId", "name", "phone"]
+    },
+    "SalesProfile": {
+      "title": "SalesProfile",
+      "description": "Profil dan banner sales motor",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID sales" },
+        "name": { "type": "string", "description": "Nama lengkap sales" },
+        "phone": { "type": "string", "description": "Nomor WhatsApp sales" },
+        "photoUrl": { "type": "string", "description": "Foto profil sales" },
+        "bannerUrl": { "type": "string", "description": "Banner promosi sales" },
+        "updatedAt": { "type": "string", "description": "Waktu pembaruan" }
+      },
+      "required": ["userId", "name"]
+    }
+  },
+  "firestore": {
+    "/motors/{motorId}": {
+      "schema": "Motor",
+      "description": "Koleksi listing motor per sales"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Koleksi customer per sales"
+    },
+    "/sales_profiles/{userId}": {
+      "schema": "SalesProfile",
+      "description": "Profil sales dengan document ID = UID sales"
+    }
+  }
+}
